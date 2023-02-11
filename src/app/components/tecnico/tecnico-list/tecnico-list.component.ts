@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tecnico } from 'src/app/models/tecnico';
+import {MatSort, Sort} from '@angular/material/sort';
+import { TecnicoService } from 'src/app/services/tecnico.service';
 
 @Component({
   selector: 'app-tecnico-list',
@@ -10,31 +13,44 @@ import { Tecnico } from 'src/app/models/tecnico';
 })
 export class TecnicoListComponent implements OnInit {
 
-  ELEMENT_DATA: Tecnico[] = [
-    {
-      id: 1,
-      nome: 'João Marcos',
-      cpf: '15243038792',
-      email: 'joao@gmail.com',
-      senha: '1234',
-      perfis: ['0'],
-      dataCriacao: '10/02/2023'
-    }
-  ]
+  ELEMENT_DATA: Tecnico[] = []
   
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acoes'];
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'acoes'];
   dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);
 
-  constructor() { }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(
+    private service: TecnicoService,
+    private _liveAnnouncer: LiveAnnouncer) { }
 
   ngOnInit(): void {
+    this.findAll();
   }
 
+  findAll() {
+    this.service.findAll().subscribe(resposta => {
+      this.ELEMENT_DATA = resposta;
+      this.dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA) //or resposta
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  /** Announce the change in sort state for assistive technology. */
+  announceSortChange(sortState: Sort) {
+
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
   }
 
 }

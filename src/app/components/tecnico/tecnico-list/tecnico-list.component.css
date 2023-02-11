@@ -3,6 +3,28 @@
     margin: auto;
 }
 
+h1 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+button {
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+    /*display: flex;
+    align-items: center;
+    justify-content: right;
+    */
+}
+
 table {
     width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
 }

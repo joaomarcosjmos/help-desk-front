@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatSortModule } from '@angular/material/sort'
 
 // Componentes do projeto
 import { NavComponent } from './components/nav/nav.component';
@@ -69,6 +70,7 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatSortModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
