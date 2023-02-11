@@ -29,6 +29,6 @@ export const AuthInterceptorProvider = [
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
-    muil: true
+    multi: true
   }
 ]
