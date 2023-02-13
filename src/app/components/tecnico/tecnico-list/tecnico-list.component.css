@@ -28,3 +28,11 @@ table {
 th.mat-sort-header-sorted {
     color: black;
 }
+
+.edit {
+    color: rgb(89, 167, 231);
+}
+
+.delete {
+    color: red;
+}
