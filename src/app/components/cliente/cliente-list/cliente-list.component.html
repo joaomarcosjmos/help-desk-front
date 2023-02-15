@@ -10,7 +10,7 @@
   </mat-form-field>
   
     <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" matSortActive="id" matSortDirection="desc">
       
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id"> Id </th>
