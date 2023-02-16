@@ -5,7 +5,6 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Chamado } from 'src/app/models/chamados';
 import { ChamadoService } from 'src/app/services/chamado.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-chamado-list',
