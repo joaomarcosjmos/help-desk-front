@@ -78,14 +78,14 @@
           name="observacoes"
           [formControl]="observacoes"
           required
-          class="descricao" 
+          class="observacoes" 
           matInput 
           placeholder="Ex. Trocar bateria de notebook queimada"></textarea>
         </mat-form-field>
     </form>
     
     <button (click)="create()" [disabled]="!validaCampos()" mat-raised-button color="primary" class="full-width mat-elevation-z4">Atualizar</button>
-    <button routerLink="../" mat-stroked-button color="warn" class="full-width mat-elevation-z4">Cancelar</button>
+    <button routerLink="../../" mat-stroked-button color="warn" class="full-width mat-elevation-z4">Cancelar</button>
 
     <p class="full-width">Desenvolvido por João Marcos Silva</p>
 
